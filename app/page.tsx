@@ -138,19 +138,17 @@ export default function Home() {
       </div>
 
       {/* ── VÍDEO ── */}
-      <section className="relative py-8 sm:py-0 lg:py-0 bg-black">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="relative w-full max-w-4xl mx-auto">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl border-4 border-[#F4222F]" style={{ paddingTop: "56.25%" }}>
-              <iframe
-                src={VIDEO}
-                loading="lazy"
-                allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
-                allowFullScreen
-                title="Vídeo de apresentação"
-                style={{ border: 0, position: "absolute", top: 0, left: 0, height: "100%", width: "100%" }}
-              />
-            </div>
+      <section className="py-8 bg-black">
+        <div className="w-full max-w-4xl mx-auto px-4">
+          <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-[#F4222F]" style={{ paddingTop: "56.25%" }}>
+            <iframe
+              src={VIDEO}
+              loading="lazy"
+              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+              allowFullScreen
+              title="Vídeo de apresentação"
+              style={{ border: 0, position: "absolute", top: 0, left: 0, height: "100%", width: "100%" }}
+            />
           </div>
           <div className="flex justify-center mt-8">
             <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-lg">
@@ -162,7 +160,7 @@ export default function Home() {
 
       {/* ── PROGRAMA APROVADO + CARROSSEL ── */}
       <section id="transformations" className="py-5 md:py-10 bg-black">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 font-[family-name:var(--font-montserrat)]">
               Programa <span className="text-[#F4222F]">aprovado</span>
