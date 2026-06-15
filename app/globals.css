@@ -1,17 +1,61 @@
 @import "tailwindcss";
+@import "swiper/css";
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   background: #000;
   color: #fff;
-  margin: 0;
-  padding: 0;
 }
+
+.selection\:bg-\[\#F4222F\] ::selection { background: #F4222F; color: #fff; }
+
+@keyframes slide {
+  0% { transform: skewX(-10deg) translateX(-4px); }
+  50% { transform: skewX(-10deg) translateX(4px); }
+  100% { transform: skewX(-10deg) translateX(-4px); }
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #F4222F;
+  color: #fff;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  transform: skewX(-10deg);
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(244,34,47,0.5);
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.btn-cta:hover {
+  background: #E01F2B;
+  transform: skewX(-10deg) translateY(-2px);
+  box-shadow: 0 0 30px rgba(244,34,47,0.7);
+}
+
+.btn-cta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transform: skewX(10deg);
+}
+
+.price-box {
+  background: linear-gradient(to right, rgba(244,34,47,0.2), rgba(244,34,47,0.3), rgba(244,34,47,0.2));
+  border: 2px solid #F4222F;
+  border-radius: 8px;
+  padding: 12px 32px;
+  box-shadow: 0 0 30px rgba(244,34,47,0.4);
+  display: inline-block;
+}
+
+.swiper-transformations .swiper-slide { height: auto !important; }

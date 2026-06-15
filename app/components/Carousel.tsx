@@ -1,49 +1,86 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 
-const transformacoes = [
-  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-1.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-3.webp" },
-  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-4.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-5.webp" },
-  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-6.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-7.webp" },
-  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-8.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-9.webp" },
-  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-10.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-11.webp" },
-  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-12.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-13.webp" },
-  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-14.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-15.webp" },
-  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-16.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-16.webp" },
+const slides = [
+  { antes: "/t/transform-1.webp", depois: "/t/transform-3.webp" },
+  { antes: "/t/transform-4.webp", depois: "/t/transform-5.webp" },
+  { antes: "/t/transform-6.webp", depois: "/t/transform-7.webp" },
+  { antes: "/t/transform-8.webp", depois: "/t/transform-9.webp" },
+  { antes: "/t/transform-10.webp", depois: "/t/transform-11.webp" },
+  { antes: "/t/transform-12.webp", depois: "/t/transform-13.webp" },
+  { antes: "/t/transform-14.webp", depois: "/t/transform-15.webp" },
+  { antes: "/t/transform-16.webp", depois: "/t/transform-16.webp" },
 ];
 
-export default function Carousel() {
-  const [index, setIndex] = useState(0);
-  const visible = 3;
-  const max = transformacoes.length - visible;
+const BASE = "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations";
 
-  const prev = () => setIndex((i) => Math.max(0, i - 1));
-  const next = () => setIndex((i) => Math.min(max, i + 1));
+export default function Carousel() {
+  const swiperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const init = async () => {
+      const { Swiper } = await import("swiper");
+      const { Navigation, Autoplay } = await import("swiper/modules");
+      if (swiperRef.current) {
+        new Swiper(swiperRef.current, {
+          modules: [Navigation, Autoplay],
+          slidesPerView: 1.2,
+          spaceBetween: 20,
+          centeredSlides: false,
+          loop: true,
+          autoplay: { delay: 3000, disableOnInteraction: false },
+          navigation: {
+            nextEl: ".swiper-next",
+            prevEl: ".swiper-prev",
+          },
+          breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 20 },
+          },
+        });
+      }
+    };
+    init();
+  }, []);
 
   return (
-    <div className="relative w-full overflow-hidden px-10">
-      <div
-        className="flex gap-4 transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(calc(-${index} * (33.333% + 5px)))` }}
-      >
-        {transformacoes.map((t, i) => (
-          <div key={i} className="flex-none w-[calc(33.333%-11px)] flex gap-2">
-            <div className="flex-1 relative rounded-xl overflow-hidden border-2 border-red-600 aspect-[3/5]">
-              <div className="absolute top-0 left-0 z-10 bg-black text-white text-xs font-bold px-2 py-1">ANTES</div>
-              <Image src={t.antes} alt={`Antes ${i + 1}`} fill className="object-cover" unoptimized />
+    <div className="relative">
+      <div ref={swiperRef} className="swiper swiper-transformations pb-12">
+        <div className="swiper-wrapper">
+          {slides.map((s, i) => (
+            <div key={i} className="swiper-slide !h-auto">
+              <div className="bg-gradient-to-br from-[#F4222F] via-[#E01F2B] to-[#C01E28] p-[3px] rounded-2xl shadow-2xl h-full">
+                <div className="bg-neutral-900 rounded-2xl p-4 h-full">
+                  <div className="flex gap-2 h-full">
+                    <div className="relative flex-1">
+                      <span className="absolute top-2 left-2 bg-white text-black text-xs font-bold px-2 py-1 rounded z-10">ANTES</span>
+                      <img
+                        src={`${BASE}/transform-${s.antes.split("transform-")[1]}`}
+                        alt={`Antes ${i + 1}`}
+                        className="w-full h-[400px] object-cover rounded-lg"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="relative flex-1">
+                      <span className="absolute top-2 left-2 bg-[#F4222F] text-white text-xs font-bold px-2 py-1 rounded z-10">DEPOIS</span>
+                      <img
+                        src={`${BASE}/transform-${s.depois.split("transform-")[1]}`}
+                        alt={`Depois ${i + 1}`}
+                        className="w-full h-[400px] object-cover rounded-lg"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex-1 relative rounded-xl overflow-hidden border-2 border-red-600 aspect-[3/5]">
-              <div className="absolute top-0 left-0 z-10 bg-red-600 text-white text-xs font-bold px-2 py-1">DEPOIS</div>
-              <Image src={t.depois} alt={`Depois ${i + 1}`} fill className="object-cover" unoptimized />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
-      <button onClick={prev} disabled={index === 0} className="absolute left-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-red-600 text-white text-xl font-bold flex items-center justify-center disabled:opacity-30 hover:bg-red-700 transition-colors">‹</button>
-      <button onClick={next} disabled={index >= max} className="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-red-600 text-white text-xl font-bold flex items-center justify-center disabled:opacity-30 hover:bg-red-700 transition-colors">›</button>
+      <button className="swiper-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#F4222F] rounded-full flex items-center justify-center text-white text-xl font-bold hover:bg-[#E01F2B] transition-colors -ml-5">‹</button>
+      <button className="swiper-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#F4222F] rounded-full flex items-center justify-center text-white text-xl font-bold hover:bg-[#E01F2B] transition-colors -mr-5">›</button>
     </div>
   );
 }
