@@ -48,77 +48,67 @@ const plano = [
   "Sem valor antecipado",
 ];
 
+const ArrowRight = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+  </svg>
+);
+
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-[#F4222F] selection:text-white">
+    <div className="min-h-screen bg-black text-white">
 
-      {/* ── HERO ── */}
-      <section className="relative min-h-screen lg:min-h-screen flex flex-col justify-end lg:justify-center lg:items-center bg-black pb-0 sm:pb-10 lg:pb-0 lg:py-0">
-        {/* Desktop bg */}
-        <div className="hidden lg:block absolute inset-0 bg-[length:100%_auto] bg-center bg-no-repeat opacity-90"
-          style={{ backgroundImage: `url("${HERO_DESK}")`, backgroundPosition: "center top" }} />
-        {/* Mobile bg */}
-        <div className="lg:hidden absolute inset-0 bg-cover bg-no-repeat"
-          style={{ backgroundImage: `url("${HERO_MOB}")`, backgroundPosition: "center 12%", backgroundSize: "100%" }} />
-        {/* Gradients */}
-        <div className="lg:hidden absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-transparent via-black/10 to-black/95" />
-        <div className="hidden lg:block absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black via-black/20 to-transparent z-10 pointer-events-none" />
-        <div className="hidden lg:block absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black via-black/20 to-transparent z-10 pointer-events-none" />
+      {/* ── HERO DESKTOP ── */}
+      <section className="relative hidden lg:flex min-h-screen flex-col justify-center items-center bg-black">
+        <div className="absolute inset-0 bg-no-repeat opacity-90"
+          style={{ backgroundImage: `url("${HERO_DESK}")`, backgroundPosition: "center top", backgroundSize: "100% auto" }} />
+        <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black via-black/20 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black via-black/20 to-transparent z-10 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
 
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-30 w-full -mb-6 lg:mb-0">
-          <div className="grid grid-cols-1 gap-8 lg:gap-12">
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 lg:space-y-6 lg:max-w-xl lg:pt-40 xl:pt-48">
-
-              {/* Título mobile */}
-              <h1 className="block lg:hidden text-3xl font-black text-white leading-[1.1] uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                <span>Coxas e Glúteos maiores e mais definidos </span>
-                <span className="text-[#F4222F]">em poucas semanas</span>
-              </h1>
-
-              {/* Título desktop */}
-              <h1 className="hidden lg:block text-[2.6rem] xl:text-[3.2rem] font-black text-white leading-[1.1] uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                Coxas e Glúteos maiores e<br />mais definidos<br />
-                <span className="text-[#F4222F]">em poucas semanas</span>
-              </h1>
-
-              {/* Checklist desktop */}
-              <div className="hidden lg:block space-y-3 w-full max-w-sm lg:max-w-none">
-                {checklist.map((item) => (
-                  <div key={item} className="text-white text-base md:text-lg font-semibold flex items-start justify-center lg:justify-start gap-2">
-                    <span className="text-[#F4222F] text-xl leading-none mt-1">✓</span>
-                    <span className="text-left">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Preço desktop */}
-              <div className="hidden lg:inline-block max-w-full">
-                <div className="price-box">
-                  <p className="text-white text-lg md:text-xl lg:text-2xl font-black uppercase font-[family-name:var(--font-montserrat)]">
-                    apenas <span className="text-[#F4222F]">R$ 29,90/mês</span>
-                  </p>
+        <div className="relative z-30 w-full max-w-6xl mx-auto px-8 pt-40 xl:pt-48 pb-16">
+          <div className="flex flex-col items-start text-left space-y-6 max-w-xl">
+            <h1 className="text-[2.6rem] xl:text-[3.2rem] font-black text-white leading-[1.1] uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              Coxas e Glúteos maiores e<br />mais definidos<br />
+              <span className="text-[#F4222F]">em poucas semanas</span>
+            </h1>
+            <div className="space-y-3 w-full">
+              {checklist.map((item) => (
+                <div key={item} className="text-white text-base md:text-lg font-semibold flex items-start gap-2">
+                  <span className="text-[#F4222F] text-xl leading-none mt-1">✓</span>
+                  <span>{item}</span>
                 </div>
-              </div>
-
-              {/* CTA desktop */}
-              <div className="hidden lg:flex justify-center lg:justify-start w-full">
-                <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-base sm:text-lg md:text-xl">
-                  <span>QUERO COMEÇAR AGORA <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-                </a>
-              </div>
+              ))}
             </div>
+            <div className="price-box">
+              <p className="text-white text-lg md:text-xl lg:text-2xl font-black uppercase font-[family-name:var(--font-montserrat)]">
+                apenas <span className="text-[#F4222F]">R$ 29,90/mês</span>
+              </p>
+            </div>
+            <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-base md:text-xl">
+              <span>QUERO COMEÇAR AGORA <ArrowRight /></span>
+            </a>
           </div>
         </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-16 md:h-40 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
       </section>
 
-      {/* ── MOBILE: Checklist + Preço + CTA ── */}
-      <div className="lg:hidden bg-black px-6 pt-6 pb-8 flex flex-col items-center space-y-5">
+      {/* ── HERO MOBILE: só imagem ── */}
+      <section className="relative lg:hidden bg-black" style={{ height: "70vw", maxHeight: "420px", minHeight: "280px" }}>
+        <div className="absolute inset-0"
+          style={{ backgroundImage: `url("${HERO_MOB}")`, backgroundPosition: "center 12%", backgroundSize: "100%", backgroundRepeat: "no-repeat" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.95) 100%)" }} />
+      </section>
+
+      {/* ── MOBILE: H1 + Checklist + Preço + CTA ── */}
+      <div className="lg:hidden bg-black px-6 pt-4 pb-8 flex flex-col items-center space-y-5">
+        <h1 className="text-3xl font-black text-white leading-[1.15] uppercase font-[family-name:var(--font-montserrat)] text-center">
+          Coxas e Glúteos maiores e mais definidos{" "}
+          <span className="text-[#F4222F]">em poucas semanas</span>
+        </h1>
         <div className="space-y-3 w-full max-w-sm">
           {checklist.map((item) => (
             <div key={item} className="text-white text-base font-semibold flex items-start gap-2">
-              <span className="text-[#F4222F] text-xl">✓</span>
+              <span className="text-[#F4222F] text-xl leading-none mt-1">✓</span>
               <span className="text-left">{item}</span>
             </div>
           ))}
@@ -132,7 +122,7 @@ export default function Home() {
         </div>
         <div className="w-full max-w-sm flex justify-center">
           <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-lg w-full justify-center">
-            <span>QUERO COMEÇAR AGORA <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            <span>QUERO COMEÇAR AGORA <ArrowRight /></span>
           </a>
         </div>
       </div>
@@ -152,7 +142,7 @@ export default function Home() {
           </div>
           <div className="flex justify-center mt-8">
             <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-lg">
-              <span>COMEÇAR HOJE! <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              <span>COMEÇAR HOJE! <ArrowRight /></span>
             </a>
           </div>
         </div>
@@ -167,15 +157,15 @@ export default function Home() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#F4222F] to-transparent mx-auto mt-6" />
             <div className="mt-12 flex justify-center">
-              <div className="flex items-center divide-x divide-gray-600">
-                <div className="flex -space-x-3 pr-10">
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-3">
                   {avatares.map((a, i) => (
                     <img key={i} alt="Aluna" loading="lazy" width={48} height={48}
                       className={`w-12 h-12 rounded-full border-2 border-white hover:-translate-y-1 transition ${a.z}`}
                       src={a.src} />
                   ))}
                 </div>
-                <div className="pl-4">
+                <div className="border-l border-gray-600 pl-4">
                   <p className="text-lg text-white font-bold">
                     Aprovado por<br />
                     <span className="text-[#F4222F]">+1.200</span> alunas
@@ -185,7 +175,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative max-w-7xl mx-auto px-6">
+          <div className="relative px-6">
             <Carousel />
           </div>
 
@@ -194,7 +184,7 @@ export default function Home() {
             <p className="text-gray-400">A partir de R$ 29,90/mês</p>
             <div className="flex justify-center pt-2">
               <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-lg">
-                <span>QUERO COMEÇAR AGORA <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                <span>QUERO COMEÇAR AGORA <ArrowRight /></span>
               </a>
             </div>
           </div>
@@ -242,7 +232,7 @@ export default function Home() {
           <p className="text-gray-400 mb-8">Por apenas <span className="text-white font-bold">R$ 29,90/mês</span></p>
           <div className="flex justify-center">
             <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-lg">
-              <span>QUERO COMEÇAR AGORA <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              <span>QUERO COMEÇAR AGORA <ArrowRight /></span>
             </a>
           </div>
         </div>
@@ -279,9 +269,11 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-base w-full justify-center">
-            <span>COMEÇAR AGORA</span>
-          </a>
+          <div className="flex justify-center">
+            <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-base">
+              <span>COMEÇAR AGORA</span>
+            </a>
+          </div>
         </div>
       </section>
 
