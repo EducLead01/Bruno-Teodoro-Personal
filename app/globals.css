@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --teal: #0e9aa7;
+  --teal-dark: #0b7d88;
+  --teal-light: #e6f7f9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  color: #111;
+  background: #fff;
+}
