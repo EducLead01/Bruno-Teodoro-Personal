@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Bruno Teodoro | Personal Trainer",
+  title: "BT Personal - Coxas e Glúteos PRO",
   description:
-    "Transforme seu corpo e sua vida com acompanhamento personalizado. Personal Trainer em Goiânia.",
+    "Programa especializado para mulheres que querem coxas e glúteos maiores e mais definidos em poucas semanas, com técnicas que quase ninguém ensina.",
+  openGraph: {
+    title: "BT Personal - Coxas e Glúteos PRO",
+    description:
+      "Programa especializado para mulheres que querem coxas e glúteos maiores e mais definidos em poucas semanas.",
+    images: [
+      "https://res.cloudinary.com/dhyeghmuy/image/upload/w_1200,q_90/v1770738834/hero-bruno_oeihj5.png",
+    ],
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${geist.variable} scroll-smooth`}>
-      <body className="antialiased">{children}</body>
+    <html lang="pt-BR">
+      <body>{children}</body>
     </html>
   );
 }

@@ -3,56 +3,47 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const fotos = [
-  "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1549476464-37392f717541?w=400&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=400&h=600&fit=crop",
+const transformacoes = [
+  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-1.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-3.webp" },
+  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-4.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-5.webp" },
+  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-6.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-7.webp" },
+  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-8.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-9.webp" },
+  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-10.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-11.webp" },
+  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-12.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-13.webp" },
+  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-14.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-15.webp" },
+  { antes: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-16.webp", depois: "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations/transform-16.webp" },
 ];
 
 export default function Carousel() {
   const [index, setIndex] = useState(0);
   const visible = 3;
+  const max = transformacoes.length - visible;
 
-  const prev = () => setIndex((i) => (i === 0 ? fotos.length - visible : i - 1));
-  const next = () => setIndex((i) => (i >= fotos.length - visible ? 0 : i + 1));
+  const prev = () => setIndex((i) => Math.max(0, i - 1));
+  const next = () => setIndex((i) => Math.min(max, i + 1));
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden px-10">
       <div
         className="flex gap-4 transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(calc(-${index} * (33.333% + 16px)))` }}
+        style={{ transform: `translateX(calc(-${index} * (33.333% + 5px)))` }}
       >
-        {fotos.map((src, i) => (
-          <div
-            key={i}
-            className="flex-none w-[calc(33.333%-11px)] rounded-2xl overflow-hidden border-2 border-red-600 bg-black aspect-[3/4] relative"
-          >
-            <Image
-              src={src}
-              alt={`Resultado ${i + 1}`}
-              fill
-              className="object-cover"
-              unoptimized
-            />
+        {transformacoes.map((t, i) => (
+          <div key={i} className="flex-none w-[calc(33.333%-11px)] flex gap-2">
+            <div className="flex-1 relative rounded-xl overflow-hidden border-2 border-red-600 aspect-[3/5]">
+              <div className="absolute top-0 left-0 z-10 bg-black text-white text-xs font-bold px-2 py-1">ANTES</div>
+              <Image src={t.antes} alt={`Antes ${i + 1}`} fill className="object-cover" unoptimized />
+            </div>
+            <div className="flex-1 relative rounded-xl overflow-hidden border-2 border-red-600 aspect-[3/5]">
+              <div className="absolute top-0 left-0 z-10 bg-red-600 text-white text-xs font-bold px-2 py-1">DEPOIS</div>
+              <Image src={t.depois} alt={`Depois ${i + 1}`} fill className="object-cover" unoptimized />
+            </div>
           </div>
         ))}
       </div>
 
-      <button
-        onClick={prev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg hover:bg-red-700 transition-colors z-10"
-      >
-        ‹
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg hover:bg-red-700 transition-colors z-10"
-      >
-        ›
-      </button>
+      <button onClick={prev} disabled={index === 0} className="absolute left-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-red-600 text-white text-xl font-bold flex items-center justify-center disabled:opacity-30 hover:bg-red-700 transition-colors">‹</button>
+      <button onClick={next} disabled={index >= max} className="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-red-600 text-white text-xl font-bold flex items-center justify-center disabled:opacity-30 hover:bg-red-700 transition-colors">›</button>
     </div>
   );
 }
