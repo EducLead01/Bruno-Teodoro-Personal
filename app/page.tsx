@@ -1,5 +1,6 @@
+import Carousel from "./components/Carousel";
+
 const WHATSAPP = "5562994369529";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP}`;
 const WHATSAPP_MSG = `https://wa.me/${WHATSAPP}?text=Ol%C3%A1%20Bruno%2C%20vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20o%20treino%20personalizado!`;
 
 export default function Home() {
@@ -134,37 +135,16 @@ export default function Home() {
       </section>
 
       {/* RESULTADOS */}
-      <section id="resultados" className="py-24 px-6">
-        <div className="max-w-5xl mx-auto text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--teal)" }}>
-            Depoimentos
+      <section id="resultados" className="py-24 px-6 bg-black">
+        <div className="max-w-5xl mx-auto text-center mb-12">
+          <p className="text-sm font-semibold uppercase tracking-widest mb-3 text-red-500">
+            Transformações
           </p>
-          <h2 className="text-4xl font-extrabold text-gray-900">O que meus alunos dizem</h2>
+          <h2 className="text-4xl font-extrabold text-white">Resultados dos meus alunos</h2>
+          <p className="text-gray-400 mt-3">Fotos reais, resultados reais.</p>
         </div>
-        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-          {[
-            {
-              name: "Ana Luiza",
-              text: "Em 3 meses perdi 8kg e ganhei muito mais disposição. O Bruno acompanha cada detalhe do treino!",
-              stars: 5,
-            },
-            {
-              name: "Carlos Henrique",
-              text: "Treino online com o Bruno há 6 meses. As planilhas são incríveis e o suporte é constante.",
-              stars: 5,
-            },
-            {
-              name: "Fernanda Oliveira",
-              text: "Nunca pensei que ia conseguir manter a consistência, mas com o acompanhamento dele ficou fácil.",
-              stars: 5,
-            },
-          ].map((t) => (
-            <div key={t.name} className="border border-gray-100 rounded-2xl p-8 hover:shadow-md transition-shadow">
-              <p className="text-yellow-400 text-lg mb-4">{"★".repeat(t.stars)}</p>
-              <p className="text-gray-700 leading-relaxed mb-6 italic">"{t.text}"</p>
-              <p className="font-bold text-gray-900">{t.name}</p>
-            </div>
-          ))}
+        <div className="max-w-5xl mx-auto">
+          <Carousel />
         </div>
       </section>
 
