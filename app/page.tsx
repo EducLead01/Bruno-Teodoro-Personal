@@ -69,15 +69,15 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white selection:bg-[#F4222F] selection:text-white">
 
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex flex-col justify-end lg:justify-center lg:items-center bg-black pb-0 sm:pb-10 lg:pb-0 lg:py-0">
+      <section className="relative min-h-screen lg:min-h-screen flex flex-col justify-end lg:justify-center lg:items-center bg-black pb-0 sm:pb-10 lg:pb-0 lg:py-0">
         {/* Desktop background */}
         <div
-          className="hidden lg:block absolute inset-0 bg-no-repeat opacity-90"
-          style={{ backgroundImage: `url("${HERO_DESK}")`, backgroundPosition: "center top", backgroundSize: "100% auto" }}
+          className="hidden lg:block absolute inset-0 bg-[length:100%_auto] bg-center bg-no-repeat opacity-90"
+          style={{ backgroundImage: `url("${HERO_DESK}")`, backgroundPosition: "center top" }}
         />
         {/* Mobile background */}
         <div
-          className="lg:hidden absolute inset-0 bg-no-repeat"
+          className="lg:hidden absolute inset-0 bg-cover bg-no-repeat"
           style={{ backgroundImage: `url("${HERO_MOB}")`, backgroundPosition: "center 12%", backgroundSize: "100%" }}
         />
         {/* Mobile gradient overlay */}
@@ -87,40 +87,51 @@ export default function Home() {
         <div className="hidden lg:block absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black via-black/20 to-transparent z-10 pointer-events-none" />
 
         {/* Content */}
-        <div className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 relative z-30 -mb-6 lg:mb-0">
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 lg:space-y-5 lg:max-w-xl lg:pt-20 xl:pt-28">
-            {/* Mobile h1 */}
-            <h1 className="block lg:hidden text-3xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              <span>Coxas e Glúteos maiores e mais definidos </span>
-              <span className="text-[#F4222F]">em poucas semanas</span>
-            </h1>
-            {/* Desktop h1 */}
-            <h1 className="hidden lg:block text-3xl xl:text-4xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              Coxas e Glúteos maiores e<br />mais definidos<br />
-              <span className="text-[#F4222F]">em poucas semanas</span>
-            </h1>
-            {/* Desktop checklist */}
-            <div className="hidden lg:block space-y-3 w-full">
-              {checklist.map((item) => (
-                <div key={item} className="text-white text-sm md:text-base font-semibold flex items-start justify-start gap-2">
-                  <span className="text-[#F4222F] text-base leading-none mt-0.5">✓</span>
-                  <span className="text-left">{item}</span>
-                </div>
-              ))}
-            </div>
-            {/* Desktop price */}
-            <div className="hidden lg:inline-block mt-2">
-              <div className="bg-neutral-900 border-2 border-[#F4222F] rounded-lg py-3 px-8 shadow-[0_0_20px_rgba(244,34,47,0.4)]">
-                <p className="text-white text-base md:text-lg lg:text-xl font-black uppercase font-[family-name:var(--font-montserrat)]">
-                  apenas <span className="text-[#F4222F]">R$ 29,90/mês</span>
-                </p>
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-30 w-full -mb-6 lg:mb-0">
+          <div className="grid grid-cols-1 gap-8 lg:gap-12">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 lg:space-y-8 lg:max-w-2xl lg:pt-24 xl:pt-32">
+              {/* Mobile h1 */}
+              <h1 className="block lg:hidden text-3xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                <span>Coxas e Glúteos maiores e mais definidos </span>
+                <span className="text-[#F4222F]">em poucas semanas</span>
+              </h1>
+              {/* Desktop h1 */}
+              <h1 className="hidden lg:block text-4xl xl:text-5xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                <span>Coxas e Glúteos maiores e<br />mais definidos<br /><span className="text-[#F4222F]">em poucas semanas</span></span>
+              </h1>
+              {/* Desktop checklist */}
+              <div className="hidden lg:block space-y-3 w-full max-w-sm lg:max-w-none">
+                {checklist.map((item) => (
+                  <div key={item} className="text-white text-base md:text-lg font-semibold flex items-start justify-center lg:justify-start gap-2">
+                    <span className="text-[#F4222F] text-xl">✓</span>
+                    <span className="text-left">{item}</span>
+                  </div>
+                ))}
               </div>
-            </div>
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex justify-start w-full mt-2">
-              <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-base">
-                <span>QUERO COMEÇAR AGORA <ArrowRight /></span>
-              </a>
+              {/* Desktop price */}
+              <div className="hidden lg:inline-block max-w-full">
+                <div className="bg-gradient-to-r from-[#F4222F]/20 via-[#F4222F]/30 to-[#F4222F]/20 border-2 border-[#F4222F] rounded-lg py-3 px-8 shadow-[0_0_30px_rgba(244,34,47,0.4)]">
+                  <p className="text-white text-lg md:text-xl lg:text-2xl font-black uppercase font-[family-name:var(--font-montserrat)]">
+                    apenas <span className="text-[#F4222F]">R$ 29,90/mês</span>
+                  </p>
+                </div>
+              </div>
+              {/* Desktop CTA */}
+              <div className="hidden lg:flex justify-center lg:justify-start w-full">
+                <a
+                  href={COMPRAR}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-[#F4222F] hover:bg-[#E01F2B] text-white text-base sm:text-lg md:text-xl font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-sm skew-x-[-10deg] transition-all duration-300 hover:-translate-y-1 shadow-[0_0_20px_rgba(244,34,47,0.5)] animate-slide"
+                >
+                  <span className="block skew-x-[10deg] flex items-center gap-2 whitespace-nowrap">
+                    QUERO COMEÇAR AGORA{" "}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 group-hover:translate-x-1 transition-transform">
+                      <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                    </svg>
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

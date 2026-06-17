@@ -19,6 +19,10 @@ body {
   100% { transform: skewX(-10deg) translateX(-4px); }
 }
 
+.animate-slide {
+  animation: slide 2s ease-in-out infinite;
+}
+
 .btn-cta {
   display: inline-flex;
   align-items: center;
