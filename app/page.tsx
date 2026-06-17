@@ -89,14 +89,14 @@ export default function Home() {
         {/* Content */}
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-30 w-full -mb-6 lg:mb-0">
           <div className="grid grid-cols-1 gap-8 lg:gap-12">
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 lg:space-y-8 lg:max-w-2xl xl:max-w-3xl lg:pt-24 xl:pt-32">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 lg:space-y-6 lg:max-w-2xl lg:pt-16 xl:pt-20">
               {/* Mobile h1 */}
               <h1 className="block lg:hidden text-3xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 <span>Coxas e Glúteos maiores e mais definidos </span>
                 <span className="text-[#F4222F]">em poucas semanas</span>
               </h1>
               {/* Desktop h1 */}
-              <h1 className="hidden lg:block text-4xl xl:text-5xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              <h1 className="hidden lg:block text-4xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 <span>Coxas e Glúteos maiores e<br />mais definidos<br /><span className="text-[#F4222F]">em poucas semanas</span></span>
               </h1>
               {/* Desktop checklist */}
