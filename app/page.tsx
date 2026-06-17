@@ -88,37 +88,37 @@ export default function Home() {
 
         {/* Content */}
         <div className="w-full max-w-6xl mx-auto px-4 md:px-6 lg:px-8 relative z-30 -mb-6 lg:mb-0">
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 lg:space-y-8 lg:max-w-2xl lg:pt-24 xl:pt-32">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 lg:space-y-5 lg:max-w-xl lg:pt-20 xl:pt-28">
             {/* Mobile h1 */}
             <h1 className="block lg:hidden text-3xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               <span>Coxas e Glúteos maiores e mais definidos </span>
               <span className="text-[#F4222F]">em poucas semanas</span>
             </h1>
             {/* Desktop h1 */}
-            <h1 className="hidden lg:block text-4xl xl:text-5xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            <h1 className="hidden lg:block text-3xl xl:text-4xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               Coxas e Glúteos maiores e<br />mais definidos<br />
               <span className="text-[#F4222F]">em poucas semanas</span>
             </h1>
             {/* Desktop checklist */}
-            <div className="hidden lg:block space-y-3 w-full max-w-sm lg:max-w-none">
+            <div className="hidden lg:block space-y-2 w-full">
               {checklist.map((item) => (
-                <div key={item} className="text-white text-base md:text-lg font-semibold flex items-start justify-start gap-2">
-                  <span className="text-[#F4222F] text-xl leading-none mt-1">✓</span>
+                <div key={item} className="text-white text-sm md:text-base font-semibold flex items-start justify-start gap-2">
+                  <span className="text-[#F4222F] text-base leading-none mt-0.5">✓</span>
                   <span className="text-left">{item}</span>
                 </div>
               ))}
             </div>
             {/* Desktop price */}
             <div className="hidden lg:inline-block">
-              <div className="bg-gradient-to-r from-[#F4222F]/20 via-[#F4222F]/30 to-[#F4222F]/20 border-2 border-[#F4222F] rounded-lg py-3 px-8 shadow-[0_0_30px_rgba(244,34,47,0.4)]">
-                <p className="text-white text-lg md:text-xl lg:text-2xl font-black uppercase font-[family-name:var(--font-montserrat)]">
+              <div className="bg-black/60 border-2 border-[#F4222F] rounded-lg py-2 px-6 shadow-[0_0_20px_rgba(244,34,47,0.4)]">
+                <p className="text-white text-base md:text-lg lg:text-xl font-black uppercase font-[family-name:var(--font-montserrat)]">
                   apenas <span className="text-[#F4222F]">R$ 29,90/mês</span>
                 </p>
               </div>
             </div>
             {/* Desktop CTA */}
             <div className="hidden lg:flex justify-start w-full">
-              <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-lg">
+              <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-base">
                 <span>QUERO COMEÇAR AGORA <ArrowRight /></span>
               </a>
             </div>
