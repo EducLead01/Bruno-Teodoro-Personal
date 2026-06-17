@@ -89,7 +89,7 @@ export default function Home() {
         {/* Content */}
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-30 w-full -mb-6 lg:mb-0">
           <div className="grid grid-cols-1 gap-8 lg:gap-12">
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 lg:space-y-6 lg:max-w-2xl lg:pt-16 xl:pt-20">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-5 lg:gap-6 lg:max-w-2xl lg:pt-16 xl:pt-20">
               {/* Mobile h1 */}
               <h1 className="block lg:hidden text-3xl font-black text-white leading-tight uppercase font-[family-name:var(--font-montserrat)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 <span>Coxas e Glúteos maiores e mais definidos </span>
