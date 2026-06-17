@@ -141,7 +141,7 @@ export default function Home() {
       </section>
 
       {/* ── MOBILE: checklist + preço + CTA ── */}
-      <div className="lg:hidden bg-black px-6 pt-6 pb-8 flex flex-col items-center gap-5">
+      <div className="lg:hidden relative z-10 bg-black px-6 pt-6 pb-8 flex flex-col items-center gap-5">
         <div className="flex flex-col gap-3 w-full max-w-sm">
           {checklist.map((item) => (
             <div key={item} className="text-white text-base font-semibold flex items-start gap-2">
