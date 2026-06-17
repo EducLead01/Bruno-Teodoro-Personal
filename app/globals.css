@@ -59,3 +59,15 @@ body {
 }
 
 .swiper-transformations .swiper-slide { height: auto !important; }
+
+/* Esconder scrollbar do ReviewsCarousel */
+.reviews-track::-webkit-scrollbar { display: none; }
+.reviews-track { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Largura responsiva dos slides de review */
+@media (min-width: 640px) {
+  .review-slide { width: calc(50% - 12px) !important; }
+}
+@media (min-width: 1024px) {
+  .review-slide { width: calc(33.333% - 16px) !important; }
+}

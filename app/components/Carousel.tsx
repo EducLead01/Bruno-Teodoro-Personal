@@ -59,7 +59,7 @@ export default function Carousel() {
                       <img
                         src={`${BASE}/transform-${s.antes.split("transform-")[1]}`}
                         alt={`Antes ${i + 1}`}
-                        className="w-full h-[400px] object-cover rounded-lg"
+                        className="w-full h-[250px] sm:h-[320px] md:h-[400px] object-cover rounded-lg"
                         loading="lazy"
                       />
                     </div>
@@ -68,7 +68,7 @@ export default function Carousel() {
                       <img
                         src={`${BASE}/transform-${s.depois.split("transform-")[1]}`}
                         alt={`Depois ${i + 1}`}
-                        className="w-full h-[400px] object-cover rounded-lg"
+                        className="w-full h-[250px] sm:h-[320px] md:h-[400px] object-cover rounded-lg"
                         loading="lazy"
                       />
                     </div>
