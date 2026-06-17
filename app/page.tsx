@@ -100,7 +100,7 @@ export default function Home() {
               <span className="text-[#F4222F]">em poucas semanas</span>
             </h1>
             {/* Desktop checklist */}
-            <div className="hidden lg:block space-y-2 w-full">
+            <div className="hidden lg:block space-y-3 w-full">
               {checklist.map((item) => (
                 <div key={item} className="text-white text-sm md:text-base font-semibold flex items-start justify-start gap-2">
                   <span className="text-[#F4222F] text-base leading-none mt-0.5">✓</span>
@@ -109,15 +109,15 @@ export default function Home() {
               ))}
             </div>
             {/* Desktop price */}
-            <div className="hidden lg:inline-block">
-              <div className="bg-black/60 border-2 border-[#F4222F] rounded-lg py-2 px-6 shadow-[0_0_20px_rgba(244,34,47,0.4)]">
+            <div className="hidden lg:inline-block mt-2">
+              <div className="bg-neutral-900 border-2 border-[#F4222F] rounded-lg py-3 px-8 shadow-[0_0_20px_rgba(244,34,47,0.4)]">
                 <p className="text-white text-base md:text-lg lg:text-xl font-black uppercase font-[family-name:var(--font-montserrat)]">
                   apenas <span className="text-[#F4222F]">R$ 29,90/mês</span>
                 </p>
               </div>
             </div>
             {/* Desktop CTA */}
-            <div className="hidden lg:flex justify-start w-full">
+            <div className="hidden lg:flex justify-start w-full mt-2">
               <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-base">
                 <span>QUERO COMEÇAR AGORA <ArrowRight /></span>
               </a>
