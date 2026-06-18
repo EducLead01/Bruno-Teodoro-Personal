@@ -64,6 +64,7 @@ body {
   display: inline-block;
 }
 
+.transformations-swiper .swiper-slide { height: auto !important; }
 .swiper-transformations .swiper-slide { height: auto !important; }
 
 /* Esconder scrollbar do ReviewsCarousel */

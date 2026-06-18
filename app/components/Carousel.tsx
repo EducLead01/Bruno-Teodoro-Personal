@@ -1,39 +1,37 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
-
-const slides = [
-  { antes: "/t/transform-1.webp", depois: "/t/transform-3.webp" },
-  { antes: "/t/transform-4.webp", depois: "/t/transform-5.webp" },
-  { antes: "/t/transform-6.webp", depois: "/t/transform-7.webp" },
-  { antes: "/t/transform-8.webp", depois: "/t/transform-9.webp" },
-  { antes: "/t/transform-10.webp", depois: "/t/transform-11.webp" },
-  { antes: "/t/transform-12.webp", depois: "/t/transform-13.webp" },
-  { antes: "/t/transform-14.webp", depois: "/t/transform-15.webp" },
-  { antes: "/t/transform-16.webp", depois: "/t/transform-16.webp" },
-];
 
 const BASE = "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations";
 
+const slides = Array.from({ length: 8 }, (_, i) => ({
+  src: `${BASE}/new-transform-${i + 1}.jpeg`,
+  alt: `Transformação ${i + 1}`,
+}));
+
 export default function Carousel() {
   const swiperRef = useRef<HTMLDivElement>(null);
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const init = async () => {
       const { Swiper } = await import("swiper");
-      const { Navigation, Autoplay } = await import("swiper/modules");
+      const { Navigation, Autoplay, Pagination } = await import("swiper/modules");
       if (swiperRef.current) {
         new Swiper(swiperRef.current, {
-          modules: [Navigation, Autoplay],
+          modules: [Navigation, Autoplay, Pagination],
           slidesPerView: 1.2,
           spaceBetween: 20,
-          centeredSlides: false,
           loop: true,
           autoplay: { delay: 3000, disableOnInteraction: false },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
           navigation: {
-            nextEl: ".swiper-next",
-            prevEl: ".swiper-prev",
+            nextEl: ".swiper-button-next-custom",
+            prevEl: ".swiper-button-prev-custom",
           },
           breakpoints: {
             640: { slidesPerView: 2, spaceBetween: 20 },
@@ -46,41 +44,49 @@ export default function Carousel() {
   }, []);
 
   return (
-    <div className="relative">
-      <div ref={swiperRef} className="swiper swiper-transformations pb-12">
+    <div className="relative max-w-7xl mx-auto">
+      <div ref={swiperRef} className="swiper transformations-swiper pb-12">
         <div className="swiper-wrapper">
           {slides.map((s, i) => (
-            <div key={i} className="swiper-slide !h-auto">
-              <div className="bg-gradient-to-br from-[#F4222F] via-[#E01F2B] to-[#C01E28] p-[3px] rounded-2xl shadow-2xl h-full">
-                <div className="bg-neutral-900 rounded-2xl p-4 h-full">
-                  <div className="flex gap-2 h-full">
-                    <div className="relative flex-1">
-                      <span className="absolute top-2 left-2 bg-white text-black text-xs font-bold px-2 py-1 rounded z-10">ANTES</span>
-                      <img
-                        src={`${BASE}/transform-${s.antes.split("transform-")[1]}`}
-                        alt={`Antes ${i + 1}`}
-                        className="w-full h-[250px] sm:h-[320px] md:h-[400px] object-cover rounded-lg"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="relative flex-1">
-                      <span className="absolute top-2 left-2 bg-[#F4222F] text-white text-xs font-bold px-2 py-1 rounded z-10">DEPOIS</span>
-                      <img
-                        src={`${BASE}/transform-${s.depois.split("transform-")[1]}`}
-                        alt={`Depois ${i + 1}`}
-                        className="w-full h-[250px] sm:h-[320px] md:h-[400px] object-cover rounded-lg"
-                        loading="lazy"
-                      />
-                    </div>
+            <div key={i} className="swiper-slide" style={{ height: "auto", alignSelf: "flex-start" }}>
+              <div className="bg-gradient-to-br from-[#F4222F] via-[#E01F2B] to-[#C01E28] p-1 rounded-2xl shadow-2xl">
+                <div className="bg-neutral-900 rounded-2xl p-3">
+                  <div className="relative overflow-hidden rounded-lg">
+                    <span className="absolute top-2 left-2 bg-white text-black text-xs font-bold px-2 py-1 rounded z-10">ANTES</span>
+                    <span className="absolute top-2 right-2 bg-[#F4222F] text-white text-xs font-bold px-2 py-1 rounded z-10">DEPOIS</span>
+                    <img
+                      alt={s.alt}
+                      loading="lazy"
+                      className="w-full object-cover rounded-lg"
+                      src={s.src}
+                      style={{ height: "420px", objectFit: "cover" }}
+                    />
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+        <div className="swiper-pagination" />
       </div>
-      <button className="swiper-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#F4222F] rounded-full flex items-center justify-center text-white text-xl font-bold hover:bg-[#E01F2B] transition-colors -ml-5">‹</button>
-      <button className="swiper-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-[#F4222F] rounded-full flex items-center justify-center text-white text-xl font-bold hover:bg-[#E01F2B] transition-colors -mr-5">›</button>
+      <button
+        ref={prevRef}
+        aria-label="Anterior"
+        className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#F4222F] hover:bg-[#d11d28] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        ref={nextRef}
+        aria-label="Próximo"
+        className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#F4222F] hover:bg-[#d11d28] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
     </div>
   );
 }

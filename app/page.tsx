@@ -219,14 +219,14 @@ export default function Home() {
             <Carousel />
           </div>
 
-          <div className="text-center mt-12 space-y-3">
-            <p className="text-2xl font-black uppercase font-[family-name:var(--font-montserrat)]">FAÇA PARTE DO TEAM BT</p>
-            <p className="text-gray-400">A partir de R$ 29,90/mês</p>
-            <div className="flex justify-center pt-2">
-              <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="btn-cta text-lg">
-                <span>QUERO COMEÇAR AGORA <ArrowRight /></span>
-              </a>
-            </div>
+          <div className="flex flex-col items-center gap-4 mt-12">
+            <a href={COMPRAR} target="_blank" rel="noopener noreferrer" className="group bg-[#F4222F] hover:bg-[#d11d28] text-white text-lg md:text-xl font-bold py-5 px-12 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(244,34,47,0.6)] inline-flex items-center gap-3 uppercase">
+              FAÇA PARTE DO TEAM BT
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-6 h-6 group-hover:translate-x-2 transition-transform">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <p className="text-white text-base md:text-lg font-semibold">A partir de <span className="text-[#F4222F] font-black">R$ 29,90/mês</span></p>
           </div>
         </div>
       </section>
