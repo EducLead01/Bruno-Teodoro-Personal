@@ -445,7 +445,7 @@ export default function Home() {
             <div className="flex-shrink-0">
               <div className="max-w-[100px] md:max-w-[120px]">
                 <img alt="BT Personal Trainer" className="w-full h-auto object-contain" loading="lazy"
-                  src="https://brunoteodoropersonal.com.br/consultoria-bruno/logo-bt.webp" />
+                  src="/images/logo-bt.webp" />
               </div>
             </div>
             <div className="text-center flex-1">
