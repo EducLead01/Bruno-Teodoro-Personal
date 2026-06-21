@@ -2,14 +2,12 @@
 
 import { useRef } from "react";
 
-const BASE = "https://brunoteodoropersonal.com.br/consultoria-bruno/reviews";
-
 const reviews = [
-  { nome: "Olívia Santos", cargo: "Aluna Transformada", foto: `${BASE}/olivia-santos.jpg`, texto: "Em 4 semanas já senti mudanças incríveis! Meus glúteos ficaram mais firmes e minhas coxas mais definidas. O programa é simples e eficaz, sem treinos mirabolantes ou dietas impossíveis." },
-  { nome: "Maria Fernanda", cargo: "Resultado em 30 dias", foto: `${BASE}/maria-fernanda.jpg`, texto: "Nunca pensei que conseguiria resultados tão rápidos sem precisar de dietas malucas. O suporte no WhatsApp fez toda a diferença e me manteve focada no objetivo." },
-  { nome: "Caroline Lopes", cargo: "Transformação Completa", foto: `${BASE}/caroline-lopes.jpg`, texto: "O programa superou minhas expectativas! Em 30 dias meu corpo mudou completamente. Recomendo para todas que querem resultados de verdade e um acompanhamento personalizado." },
-  { nome: "Fernanda Lima", cargo: "Mudança Real", foto: `${BASE}/fernanda-lima.jpg`, texto: "Estava desanimada com outros programas que não davam resultado. O Coxas e Glúteos PRO me surpreendeu! Já na segunda semana vi mudanças significativas." },
-  { nome: "Beatriz Ribeiro", cargo: "Confiança Renovada", foto: `${BASE}/beatriz-ribeiro.jpg`, texto: "Minha autoestima mudou completamente! O programa não só transformou meu corpo, mas também minha mentalidade. Me sinto mais forte e confiante." },
+  { nome: "Olívia Santos", cargo: "Aluna Transformada", foto: `/images/reviews/olivia-santos.jpg`, texto: "Em 4 semanas já senti mudanças incríveis! Meus glúteos ficaram mais firmes e minhas coxas mais definidas. O programa é simples e eficaz, sem treinos mirabolantes ou dietas impossíveis." },
+  { nome: "Maria Fernanda", cargo: "Resultado em 30 dias", foto: `/images/reviews/maria-fernanda.jpg`, texto: "Nunca pensei que conseguiria resultados tão rápidos sem precisar de dietas malucas. O suporte no WhatsApp fez toda a diferença e me manteve focada no objetivo." },
+  { nome: "Caroline Lopes", cargo: "Transformação Completa", foto: `/images/reviews/caroline-lopes.jpg`, texto: "O programa superou minhas expectativas! Em 30 dias meu corpo mudou completamente. Recomendo para todas que querem resultados de verdade e um acompanhamento personalizado." },
+  { nome: "Fernanda Lima", cargo: "Mudança Real", foto: `/images/reviews/fernanda-lima.jpg`, texto: "Estava desanimada com outros programas que não davam resultado. O Coxas e Glúteos PRO me surpreendeu! Já na segunda semana vi mudanças significativas." },
+  { nome: "Beatriz Ribeiro", cargo: "Confiança Renovada", foto: `/images/reviews/beatriz-ribeiro.jpg`, texto: "Minha autoestima mudou completamente! O programa não só transformou meu corpo, mas também minha mentalidade. Me sinto mais forte e confiante." },
 ];
 
 const Stars = () => (

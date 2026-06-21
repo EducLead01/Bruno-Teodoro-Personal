@@ -2,10 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-const BASE = "https://brunoteodoropersonal.com.br/consultoria-bruno/transformations";
-
 const slides = Array.from({ length: 8 }, (_, i) => ({
-  src: `${BASE}/new-transform-${i + 1}.jpeg`,
+  src: `/images/transformations/new-transform-${i + 1}.jpeg`,
   alt: `Transformação ${i + 1}`,
 }));
 
