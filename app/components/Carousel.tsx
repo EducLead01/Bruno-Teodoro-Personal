@@ -55,9 +55,8 @@ export default function Carousel() {
                     <img
                       alt={s.alt}
                       loading="lazy"
-                      className="w-full object-cover rounded-lg"
+                      className="w-full rounded-lg block"
                       src={s.src}
-                      style={{ height: "420px", objectFit: "cover", objectPosition: "top" }}
                     />
                   </div>
                 </div>
