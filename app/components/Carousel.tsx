@@ -57,7 +57,7 @@ export default function Carousel() {
                       loading="lazy"
                       className="w-full rounded-lg block"
                       src={s.src}
-                      style={{ height: "460px", objectFit: "cover", objectPosition: "top" }}
+                      style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", objectPosition: "top" }}
                     />
                   </div>
                 </div>
